@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- struts为配置文件根元素 -->
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+
+	<package name="login" extends="struts-default">
+		<action name="login" class="com.xmerp.idcs.stm.action.StmUserAction"
+			method="checkLogin">
+			<result name="success">/index.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<action name="logout" class="com.xmerp.idcs.stm.action.StmUserAction"
+			method="logout">
+			<result name="success" type="redirect">/login.jsp</result>
+			<result name="error" type="redirect">/login.jsp</result>
+		</action>
+	</package>
+
+	<include file="com/xmerp/idcs/stm/struts-stm.xml" />
+	<include file="com/xmerp/idcs/tr/struts-tr.xml" />
+	<include file="com/xmerp/idcs/wf/struts-wf.xml" />
+	<include file="com/xmerp/pns/session/struts-session.xml" />
+	<include file="com/xmerp/common/struts-model.xml" />
+</struts>
+
